@@ -1,6 +1,7 @@
 package com.example.santanadev.lydaynew.entity.user;
 
 import com.example.santanadev.lydaynew.entity.BaseEntity;
+import com.example.santanadev.lydaynew.entity.branch.Branch;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,4 +25,8 @@ public class User extends BaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @ManyToOne
+    @JoinColumn(name = "branches")
+    private Branch branch;
 }

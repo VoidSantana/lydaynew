@@ -4,6 +4,7 @@ import com.example.santanadev.lydaynew.dto.user.UserRequestDto;
 import com.example.santanadev.lydaynew.dto.user.UserResponseDto;
 import com.example.santanadev.lydaynew.entity.user.Role;
 import com.example.santanadev.lydaynew.entity.user.User;
+import com.example.santanadev.lydaynew.exeption.BusinessException;
 import com.example.santanadev.lydaynew.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,10 @@ public class UserService {
 
     public UserResponseDto create(UserRequestDto dto){
 
+        if (userRepository.findByUsername(dto.getUsername()).isPresent()){
+            throw new BusinessException("Usuario Já Existe");
+        }
+
         User user = User.builder()
                 .username(dto.getUsername())
                 .password(dto.getPassword())
@@ -43,14 +48,14 @@ public class UserService {
     public UserResponseDto findById(Long id){
 
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+                .orElseThrow(() -> new BusinessException("Usuario não encontrado"));
         return mapToDTO(user);
     }
 
     public UserResponseDto update(Long id, UserRequestDto dto) {
 
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario nao encontrado para atualização"));
+                .orElseThrow(() -> new BusinessException("Usuario nao encontrado para atualização"));
 
         user.setUsername(dto.getUsername());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
@@ -60,7 +65,7 @@ public class UserService {
 
     public void delete(Long id){
         User user = userRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Usuario não encontrado para deleção"));
+                .orElseThrow(()-> new BusinessException("Usuario não encontrado para deleção"));
         user.setDeleted(true);
         userRepository.save(user);
     }
