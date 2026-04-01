@@ -1,6 +1,6 @@
-package com.example.santanadev.lydaynew.repository.user;
+package com.example.santanadev.lydaynew.repository;
 
-import com.example.santanadev.lydaynew.entity.user.User;
+import com.example.santanadev.lydaynew.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

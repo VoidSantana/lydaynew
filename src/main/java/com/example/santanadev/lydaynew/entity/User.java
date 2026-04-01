@@ -1,7 +1,5 @@
-package com.example.santanadev.lydaynew.entity.user;
+package com.example.santanadev.lydaynew.entity;
 
-import com.example.santanadev.lydaynew.entity.BaseEntity;
-import com.example.santanadev.lydaynew.entity.branch.Branch;
 import jakarta.persistence.*;
 import lombok.*;
 

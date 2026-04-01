@@ -1,9 +1,9 @@
-package com.example.santanadev.lydaynew.controller.user;
+package com.example.santanadev.lydaynew.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import com.example.santanadev.lydaynew.dto.user.UserRequestDto;
-import com.example.santanadev.lydaynew.dto.user.UserResponseDto;
-import com.example.santanadev.lydaynew.service.user.UserService;
+import com.example.santanadev.lydaynew.dto.UserRequestDto;
+import com.example.santanadev.lydaynew.dto.UserResponseDto;
+import com.example.santanadev.lydaynew.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

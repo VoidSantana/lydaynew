@@ -1,6 +1,6 @@
-package com.example.santanadev.lydaynew.dto.user;
+package com.example.santanadev.lydaynew.dto;
 
-import com.example.santanadev.lydaynew.entity.user.Role;
+import com.example.santanadev.lydaynew.entity.Role;
 import lombok.Builder;
 import lombok.Data;
 

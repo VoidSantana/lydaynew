@@ -1,4 +1,4 @@
-package com.example.santanadev.lydaynew.entity.user;
+package com.example.santanadev.lydaynew.entity;
 
 public enum Role {
 

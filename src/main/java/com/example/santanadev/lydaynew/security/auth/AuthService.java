@@ -1,8 +1,8 @@
 package com.example.santanadev.lydaynew.security.auth;
 
-import com.example.santanadev.lydaynew.entity.user.Role;
-import com.example.santanadev.lydaynew.entity.user.User;
-import com.example.santanadev.lydaynew.repository.user.UserRepository;
+import com.example.santanadev.lydaynew.entity.Role;
+import com.example.santanadev.lydaynew.entity.User;
+import com.example.santanadev.lydaynew.repository.UserRepository;
 import com.example.santanadev.lydaynew.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

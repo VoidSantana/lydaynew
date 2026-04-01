@@ -1,6 +1,5 @@
-package com.example.santanadev.lydaynew.entity.branch;
+package com.example.santanadev.lydaynew.entity;
 
-import com.example.santanadev.lydaynew.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -1,6 +1,6 @@
 package com.example.santanadev.lydaynew.security.user;
 
-import com.example.santanadev.lydaynew.repository.user.UserRepository;
+import com.example.santanadev.lydaynew.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;

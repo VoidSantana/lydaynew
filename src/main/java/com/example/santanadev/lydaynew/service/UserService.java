@@ -1,11 +1,11 @@
-package com.example.santanadev.lydaynew.service.user;
+package com.example.santanadev.lydaynew.service;
 
-import com.example.santanadev.lydaynew.dto.user.UserRequestDto;
-import com.example.santanadev.lydaynew.dto.user.UserResponseDto;
-import com.example.santanadev.lydaynew.entity.user.Role;
-import com.example.santanadev.lydaynew.entity.user.User;
+import com.example.santanadev.lydaynew.dto.UserRequestDto;
+import com.example.santanadev.lydaynew.dto.UserResponseDto;
+import com.example.santanadev.lydaynew.entity.Role;
+import com.example.santanadev.lydaynew.entity.User;
 import com.example.santanadev.lydaynew.exeption.BusinessException;
-import com.example.santanadev.lydaynew.repository.user.UserRepository;
+import com.example.santanadev.lydaynew.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

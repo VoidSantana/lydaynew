@@ -1,8 +1,8 @@
 package com.example.santanadev.lydaynew.config;
 
-import com.example.santanadev.lydaynew.entity.user.Role;
-import com.example.santanadev.lydaynew.entity.user.User;
-import com.example.santanadev.lydaynew.repository.user.UserRepository;
+import com.example.santanadev.lydaynew.entity.Role;
+import com.example.santanadev.lydaynew.entity.User;
+import com.example.santanadev.lydaynew.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

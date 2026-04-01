@@ -1,4 +1,4 @@
-package com.example.santanadev.lydaynew.dto.user;
+package com.example.santanadev.lydaynew.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.example.santanadev.lydaynew.security.user;
 
-import com.example.santanadev.lydaynew.entity.user.User;
+import com.example.santanadev.lydaynew.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
