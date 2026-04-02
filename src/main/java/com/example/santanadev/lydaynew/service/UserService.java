@@ -8,15 +8,14 @@ import com.example.santanadev.lydaynew.entity.User;
 import com.example.santanadev.lydaynew.exeption.BusinessException;
 import com.example.santanadev.lydaynew.repository.BranchRepository;
 import com.example.santanadev.lydaynew.repository.UserRepository;
+import com.example.santanadev.lydaynew.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +36,7 @@ public class UserService {
 
         User user = User.builder()
                 .username(dto.getUsername())
-                .password(dto.getPassword())
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .roles(Set.of(Role.ROLE_USER))
                 .branch(branch)
                 .build();
@@ -46,16 +45,29 @@ public class UserService {
 
     public Page<UserResponseDto> findAll(int page, int size){
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+        Long branchId = SecurityUtil.getCurrentBranchId();
 
-        return userRepository.findAll(pageable)
-                .map(this::mapToDTO);
+        Pageable pageable = PageRequest.of(page, size);
+
+        return userRepository.findByBranchId(branchId)
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        list -> new PageImpl<>(list, pageable, list.size()
+                        )
+                ));
     }
 
     public UserResponseDto findById(Long id){
 
+        Long branchId = SecurityUtil.getCurrentBranchId();
+
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Usuario não encontrado"));
+
+        if (!user.getBranch().getId().equals(branchId)){
+            throw new BusinessException("Acesso negado a outra filial");
+        }
         return mapToDTO(user);
     }
 

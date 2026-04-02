@@ -12,9 +12,9 @@ public class UserDetailsImpl implements UserDetails {
 
     private final User user;
 
-    public Long getId(){
-        return user.getId();
-    }
+    public Long getId() { return user.getId();}
+
+    public Long getBranchId() { return user.getBranch().getId();}
 
     public UserDetailsImpl( User user) {
         this.user = user;
