@@ -4,13 +4,10 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class UserRequestDto {
+public class BranchRequestDto {
 
     @NotBlank
-    private String username;
+    private String name;
 
-    @NotBlank
-    private String password;
-
-    private Long branchId;
+    private String code;
 }

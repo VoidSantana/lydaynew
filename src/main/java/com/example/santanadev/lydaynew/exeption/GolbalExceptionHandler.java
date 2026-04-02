@@ -43,7 +43,7 @@ public class GolbalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(ErrorResponse.builder()
                         .status(500)
-                        .message("Erro interno")
+                        .message(ex.getMessage())
                         .timestamp(LocalDateTime.now())
                         .build());
     }

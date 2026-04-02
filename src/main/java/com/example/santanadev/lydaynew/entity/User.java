@@ -25,6 +25,6 @@ public class User extends BaseEntity {
     private Set<Role> roles;
 
     @ManyToOne
-    @JoinColumn(name = "branches")
+    @JoinColumn(name = "branches_id", nullable = false)
     private Branch branch;
 }

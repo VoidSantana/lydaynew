@@ -2,9 +2,11 @@ package com.example.santanadev.lydaynew.service;
 
 import com.example.santanadev.lydaynew.dto.UserRequestDto;
 import com.example.santanadev.lydaynew.dto.UserResponseDto;
+import com.example.santanadev.lydaynew.entity.Branch;
 import com.example.santanadev.lydaynew.entity.Role;
 import com.example.santanadev.lydaynew.entity.User;
 import com.example.santanadev.lydaynew.exeption.BusinessException;
+import com.example.santanadev.lydaynew.repository.BranchRepository;
 import com.example.santanadev.lydaynew.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,9 +23,13 @@ import java.util.Set;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BranchRepository branchRepository;
     private final PasswordEncoder passwordEncoder;
 
     public UserResponseDto create(UserRequestDto dto){
+
+        Branch branch = branchRepository.findById(dto.getBranchId())
+                .orElseThrow(() -> new BusinessException("Filial Não Encontrada"));
 
         if (userRepository.findByUsername(dto.getUsername()).isPresent()){
             throw new BusinessException("Usuario Já Existe");
@@ -33,6 +39,7 @@ public class UserService {
                 .username(dto.getUsername())
                 .password(dto.getPassword())
                 .roles(Set.of(Role.ROLE_USER))
+                .branch(branch)
                 .build();
         return mapToDTO(userRepository.save(user));
     }
